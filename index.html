@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Collage Event Management</title>
+    <link rel="stylesheet" href="style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Montserrat:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+
+<body>
+    <button class="burger" id="menuButton" onclick="toggleNavbar()">☰ Menu</button>
+    <button class="theme-toggle" id="themeToggle" onclick="change()">
+        <i class="fas fa-sun"></i>
+    </button>
+
+    <nav class="navbar" id="navbar">
+        <button class="close-btn" onclick="toggleNavbar()">×</button>
+        <div class="user-profile" id="userProfile" style="display: none;">
+            <i class="fas fa-user-circle"></i>
+            <span id="userName"></span>
+        </div>
+        <a href="#home" onclick="closeMenu()">Home</a>
+        <a href="#events" onclick="closeMenu()">Events</a>
+        <a href="#Participation" onclick="closeMenu()">Event Participation</a>
+        <a href="#gallery" onclick="closeMenu()">Gallery</a>
+        <a href="#contact" onclick="closeMenu()">Contact Us</a>
+        <a href="#about" onclick="closeMenu()">About</a>
+        <a href="#" id="logoutBtn" onclick="logout()" style="display: none;">Logout</a>
+    </nav>
+    <div class="scroll-down"><i class="fas fa-chevron-down"></i></div>
+    <header id="home">
+        <h1 class="hero-title">Unleash the Spirit of <span>Events</span></h1>
+         <p class="hero-subtitle">Organize. Participate. Celebrate. <br> The ultimate platform for college events.</p>
+        <div class="header-buttons">
+            <button onclick="goToRegister()">Register Now</button>
+            <button onclick="goToSignin()">Sign In</button>
+        </div>
+    </header>
+
+    <section id="events">
+        <h2>Upcoming Events</h2>
+        <ul class="event-list">
+            <li><strong>Annual Tech Fest</strong> <span class="event-date">22 April 2025</span> <span
+                    class="event-location">Auditorium</span><br>Experience the latest in AI, robotics, and software with
+                workshops, hackathons, and keynotes.</li>
+            <li><strong>Inter-College Debate</strong> <span class="event-date">23 April 2025</span> <span
+                    class="event-location">Conference Hall</span><br>Engage in thought-provoking discussions on trending
+                topics, judged by esteemed faculty and guests.</li>
+            <li><strong>Cultural Extravaganza</strong> <span class="event-date">25 April 2025</span> <span
+                    class="event-location">Open Grounds</span><br>Showcase your talent in music, dance, drama, and enjoy
+                vibrant performances from across the region.</li>
+            <li><strong>Sports Meet</strong> <span class="event-date">17 April 2025</span> <span
+                    class="event-location">Sports Complex</span><br>Participate in football, basketball, athletics, and
+                indoor games, promoting teamwork and sportsmanship.</li>
+        </ul>
+    </section>
+
+    <section id="Participation" data-animate>
+        <h2>Event Participation</h2>
+        <div class="gallery">
+            <div class="gallery-item" data-animate>
+                <img onclick="goTotech()" src="tech.jpg" alt="Tech Fest">
+                <div class="gallery-caption">Tech Fest 2025</div>
+            </div>
+            <div onclick="goTovol()" class="gallery-item" data-animate>
+                <img src="volunteer.png" alt="Volunteering">
+                <div class="gallery-caption">Volunteer Program</div>
+            </div>
+            <div class="gallery-item" data-animate>
+                <img onclick="goTosport()" src="sport.jpg" alt="Sports Meet">
+                <div class="gallery-caption">Sports Meet</div>
+            </div>
+            <div class="gallery-item" data-animate>
+                <img src="dance.jpg" alt="Cultural Night" onclick="goToevent()">
+                <div class="gallery-caption">Cultural Night</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="why-choose-us">
+        <h2>Why Choose Us?</h2>
+        <div class="why-choose-list">
+            <div class="why-choose-item"><i class="fas fa-users"></i> Community Driven Events</div>
+            <div class="why-choose-item"><i class="fas fa-calendar-check"></i> Seamless Registration</div>
+            <div class="why-choose-item"><i class="fas fa-award"></i> Recognized by Top Colleges</div>
+            <div class="why-choose-item"><i class="fas fa-headset"></i> 24/7 Support</div>
+        </div>
+    </section>
+
+    <section id="gallery">
+        <h2>Event Memories</h2>
+        <div class="photo-gallery">
+            <div class="item frame1 large"><img src="img1.jpg" alt="Gallery Image 1"></div>
+            <div class="item frame2"><img src="img2.jpg" alt="Gallery Image 2"></div>
+            <div class="item frame3 tall"><img src="img3.jpg" alt="Gallery Image 3"></div>
+            <div class="item frame4 wide"><img src="img4.jpg" alt="Gallery Image 4"></div>
+            <div class="item frame5"><img src="img5.jpg" alt="Gallery Image 5"></div>
+            <div class="item frame6"><img src="img6.jpg" alt="Gallery Image 6"></div>
+            <div class="item frame7 wide"><img src="img7.jpg" alt="Gallery Image 7"></div>
+            <div class="item frame8"><img src="img8.jpg" alt="Gallery Image 8"></div>
+            <div class="item frame9 tall"><img src="img9.jpg" alt="Gallery Image 9"></div>
+            <div class="item frame10 large"><img src="img10.jpg" alt="Gallery Image 10"></div>
+            <div class="item frame11"><img src="img11.jpg" alt="Gallery Image 11"></div>
+            <div class="item frame12"><img src="img12.jpg" alt="Gallery Image 12"></div>
+        </div>
+    </section>
+    <section id="faq" class="section reveal">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <button class="faq-question">How do I register for an event?</button>
+                    <div class="faq-answer">Click on 'Register Now' and fill out the form for your chosen event.</div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">Can I participate in multiple events?</button>
+                    <div class="faq-answer">Yes, you can register for as many events as you like!</div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">Will I get a certificate?</button>
+                    <div class="faq-answer">All participants receive digital certificates after the event.</div>
+                </div>
+            </div>
+        </section>
+
+    <section id="about">
+        <h2>About Us</h2>
+        <p>Our platform empowers students and staff to create, manage, and participate in memorable college events. From
+            tech fests to cultural nights, we provide the tools and support to make every event a success. Trusted by
+            top colleges, we focus on innovation, inclusivity, and seamless experiences for all participants.</p>
+    </section>
+<form action="contact.php" method="post">
+    <section id="contact" class="con">
+        <h2>Contact Us</h2>
+        <form id="contactForm">
+            <div class="contact_us">
+                <input name="name" type="text" placeholder="Your Name" required><br><br>
+                <input name="email" type="email" placeholder="Your Email" required><br><br>
+                <textarea name="Message" placeholder="Your Message" rows="6" required></textarea><br><br>
+                <button name="submit" type="submit">Send Message</button>
+            </div>
+        </form>
+
+    </section>
+</form>
+    <footer>
+        <div class="social-icons">
+            <a href="#" class="social-icon" title="Facebook"><i></i></a>
+            <a href="#" class="social-icon" title="Twitter"><i></i></a>
+            <a href="#" class="social-icon" title="Instagram"><i></i></a>
+            <a href="#" class="social-icon" title="LinkedIn"><i></i></a>
+        </div>
+        </div>
+        </div>
+        <div class="footer-bottom">
+            <span>&copy; 2025 College Event Management</span>
+            <span class="footer-links">
+                <a href="#about">About</a> &bull;
+                <a href="#blog">Blog</a> &bull;
+                <a href="#help">Help</a> &bull;
+                <a href="#privacy">Privacy</a>
+            </span>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>AOS.init();</script>
+
+    <script>
+        window.onload = function () {
+            const userName = localStorage.getItem('userName');
+            if (userName) {
+                document.getElementById('userProfile').style.display = 'flex';
+                document.getElementById('userName').textContent = 'Hello, ' + userName;
+                document.getElementById('logoutBtn').style.display = 'block';
+            }
+
+
+            document.addEventListener('click', function (event) {
+                const navbar = document.getElementById('navbar');
+                const burger = document.querySelector('.burger');
+                if (!navbar.contains(event.target) && !burger.contains(event.target) && navbar.classList.contains('open')) {
+                    navbar.classList.remove('open');
+                    burger.style.display = 'block';
+                }
+            });
+        }
+
+        function closeMenu() {
+            const navbar = document.getElementById('navbar');
+            const menuButton = document.getElementById('menuButton');
+            navbar.classList.remove('open');
+            menuButton.style.display = 'block';
+        }
+
+        function toggleNavbar() {
+            const navbar = document.getElementById('navbar');
+            const menuButton = document.getElementById('menuButton');
+            navbar.classList.toggle('open');
+
+            if (navbar.classList.contains('open')) {
+                menuButton.style.display = 'none';
+            } else {
+                menuButton.style.display = 'block';
+            }
+        }
+
+         document.querySelectorAll('.faq-question').forEach(btn => {
+            btn.addEventListener('click', function() {
+                this.classList.toggle('active');
+                const answer = this.nextElementSibling;
+                answer.style.maxHeight = answer.style.maxHeight ? null : answer.scrollHeight + 'px';
+            });
+        });
+        function goToRegister() {
+            window.location.href = "register.html";
+        }
+
+        function goToSignin() {
+            window.location.href = "sign_in.html";
+        }
+        function goToevent() {
+            window.location.href = "event.html";
+        }
+        function goTotech() {
+            window.location.href = "tech.html";
+        }
+        function goTosport() {
+            window.location.href = "sport.html";
+        }
+        function goTovol() {
+            window.location.href = "volunteer.html";
+        }
+        function change() {
+            var ele = document.body;
+            ele.classList.toggle("dark-mode");
+
+            const themeIcon = document.querySelector('.theme-toggle i');
+            if (ele.classList.contains('dark-mode')) {
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+            } else {
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+            }
+        }
+
+        document.getElementById('contactForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+            document.getElementById('contactForm').reset();
+        });
+
+        function logout() {
+            localStorage.removeItem('userName');
+            document.getElementById('userProfile').style.display = 'none';
+            document.getElementById('logoutBtn').style.display = 'none';
+            closeMenu();
+            alert('Logged out successfully!');
+        }
+
+        // Scroll-based animation for [data-animate] elements
+        function animateOnScroll() {
+            const elements = document.querySelectorAll('[data-animate]');
+            const trigger = window.innerHeight * 0.92;
+            elements.forEach(el => {
+                const rect = el.getBoundingClientRect();
+                if (rect.top < trigger && rect.bottom > 0) {
+                    el.classList.add('in-view');
+                } else {
+                    el.classList.remove('in-view');
+                }
+            });
+        }
+        window.addEventListener('scroll', animateOnScroll);
+        window.addEventListener('load', animateOnScroll);
+    </script>
+
+</body>
+
+</html>

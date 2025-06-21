@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign in</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-image: url(back2.jpg);
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .sign_conatainer {
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .sign_conatainer:hover {
+            transform: translateY(-5px);
+        }
+
+        .sign {
+            width: 100%;
+            height: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .sign input {
+            height: 45px;
+            width: 320px;
+            padding: 0 15px;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.05);
+            color: #fff;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .sign input:focus {
+            border-color: #7DA2A9;
+            outline: none;
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 15px rgba(125, 162, 169, 0.3);
+        }
+
+        .sign input:hover {
+            border-color: rgba(125, 162, 169, 0.5);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .sign input::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        label {
+            color: #fff;
+            font-size: 18px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        a {
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            color: #7DA2A9;
+            transition: all 0.3s ease;
+            text-align: center;
+            margin-top: 5px;
+        }
+
+        a:hover {
+            color: #fff;
+            text-shadow: 0 0 8px rgba(125, 162, 169, 0.5);
+        }
+
+        .sign button {
+            height: 45px;
+            width: 320px;
+            background: linear-gradient(45deg, #7DA2A9, #5c7a80);
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .sign button:hover {
+            background: linear-gradient(45deg, #5c7a80, #7DA2A9);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .sign button:active {
+            transform: translateY(0);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .signin-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        h2 {
+            font-size: 32px;
+            color: #fff;
+            margin-bottom: 30px;
+            font-weight: 700;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            letter-spacing: 1px;
+        }
+
+        .sign_conatainer {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .sign_conatainer {
+            animation: fadeIn 0.6s ease-out;
+        }
+    </style>
+</head>
+
+<body>
+        <div class="sign_conatainer">
+            <section id="signin" class="signin-section">
+                <h2>Welcome Back</h2>
+                <form id="loginForm">
+                    <div class="sign">
+                        <label>Email</label>
+                        <input name="email" id="email" type="email" placeholder="Enter your email" required>
+                        <label>Password</label>
+                        <input name="password" id="pass" type="password" placeholder="Enter your password" required>
+                        <a onclick="gt()">Don't have an account? Sign up</a>
+                        <button type="submit">Sign In</button>
+                    </div>
+                </form>
+            </section>
+        </div>
+    <script>
+        function gt() {
+            window.location.href = "register.html";
+        }
+
+        document.getElementById('loginForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            
+            const form = this;
+            const data = new FormData(form);
+
+            fetch('sign_in.php', {
+                method: 'POST',
+                body: data
+            })
+            .then(response => response.text())
+            .then(result => {
+                if (result.trim() === "success email and password is correct") {
+                    alert("Login successful!");
+                    window.location.href = "index.html";
+                } else {
+                    alert("Error: " + result);
+                }
+            })
+            .catch(error => {
+                console.error(error);
+                alert("Server error. Try again.");
+            });
+        });
+    </script>
+</body>
+
+</html>
